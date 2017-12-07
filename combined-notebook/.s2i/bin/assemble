@@ -5,13 +5,12 @@ set -eo pipefail
 # Ensure we are using the latest pip and wheel packages.
 apt-get update && apt-get install python3 python3-pip cmake -y
 pip3 install --upgrade pip
-pip2 install --upgrade pip
 
-pip install -U pip setuptools wheel
+pip3 install -U pip setuptools wheel
 
 # Install base packages needed for running Jupyter Notebooks. 
 
-pip install -r /tmp/src/requirements.txt
+pip3 install -r /tmp/src/requirements.txt
 
 # Install cling
 mkdir -p ~/builds && cd ~/builds
