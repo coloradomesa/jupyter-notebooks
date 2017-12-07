@@ -3,7 +3,7 @@
 set -eo pipefail
 
 # Ensure we are using the latest pip and wheel packages.
-apt-get update && apt-get install python3 python3-pip cmake make wget curl -y
+apt-get update && apt-get install python3 python3-pip cmake make wget curl bzip2 build-essential zlib1g-dev subversion texinfo git -y
 pip3 install --upgrade pip
 
 pip3 install -U pip setuptools wheel
@@ -13,20 +13,9 @@ pip3 install -U pip setuptools wheel
 pip3 install -r /tmp/src/requirements.txt
 
 # Install cling
-mkdir -p ~/builds && cd ~/builds
-wget https://root.cern.ch/download/cling/cling_2017-04-15_sources.tar.bz2
-tar jxf cling_2017-04-15_sources.tar.bz2
-mv src cling_2017-4-15
-mkdir -p ~/builds/cling_2017-04-15/build
-cd ~/builds/cling_2017-04-15/build
-cmake -DCMAKE_BUILD_TYPE=Release ../
-make -j8
-make install
-ldconfig
-cd /usr/share/cling/Jupyter/kernel
-pip3 install -e .
-jupyter kernelspec install cling-cpp17
-cd ~
+wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
+chmod +x cpt.py
+./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/
 
 # Activate JupyterHub extension for JupyterLab.
 
