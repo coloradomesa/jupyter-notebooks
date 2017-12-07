@@ -7,7 +7,7 @@ set -eo pipefail
 # Start the Jupyter notebook instance.
 
 if [ x"$JUPYTER_INTERFACE_TYPE" = x"lab" ]; then
-    exec jupyter lab --no-browser --ip=0.0.0.0 --port=8080
+    exec jupyter lab --no-browser --ip=0.0.0.0 --port=8080 --allow-root
 else
-    exec jupyter notebook --no-browser --ip=0.0.0.0 --port=8080
+    exec jupyter notebook --no-browser --ip=0.0.0.0 --port=8080 --allow-root
 fi
