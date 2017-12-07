@@ -15,7 +15,7 @@ pip3 install -r /tmp/src/requirements.txt
 # Install cling
 wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
 chmod +x cpt.py
-./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/
+./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/ -y
 
 # Activate JupyterHub extension for JupyterLab.
 
@@ -45,7 +45,7 @@ EOF
 mkdir -p /tmp/.s2i
 
 mv /tmp/src/builder/image_metadata.json /tmp/.s2i/image_metadata.json
-
+mkdir -p /opt/app-root/
 mv /tmp/src/builder /opt/app-root/builder
 
 rm -rf /tmp/src
