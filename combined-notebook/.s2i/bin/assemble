@@ -13,10 +13,12 @@ pip3 install -U pip setuptools wheel
 pip3 install -r /tmp/src/requirements.txt
 
 # Install cling
-wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
-chmod +x cpt.py
-./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/ -y
-
+mkdir -p cling && cd cling/
+wget https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
+tar xf cling*
+cd cling*
+sudo cp -R * /usr/local/
+cd ..
 # Activate JupyterHub extension for JupyterLab.
 
 #jupyter labextension install @jupyterlab/hub-extension
