@@ -14,7 +14,7 @@ pip3 install -r /tmp/src/requirements.txt
 
 # Install cling
 mkdir -p cling && cd cling/
-wget https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
+curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
 tar xf cling*
 cd cling*
 sudo cp -R * /usr/local/
