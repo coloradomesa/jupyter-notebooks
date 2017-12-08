@@ -54,14 +54,3 @@ rm -rf /tmp/src
 
 # Ensure passwd/group file intercept happens for any shell environment.
 
-echo "source /opt/app-root/etc/generate_container_user" >> /opt/app-root/etc/scl_enable
-
-# Create additional directories.
-
-echo " -----> Creating additional directories."
-
-mkdir -p /opt/app-root/data
-
-# Fixup permissions on directories and files.
-
-fix-permissions /opt/app-root
