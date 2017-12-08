@@ -17,6 +17,7 @@ mkdir -p cling && cd cling/
 curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
 tar xf cling*
 cd cling_2017-11-13_ubuntu16
+rm ../cling_2017-11-13_ubuntu16.tar.bz2
 cp -R * /usr/local/
 cd /usr/local/share/cling/Jupyter/kernel/
 pip3 install -e .
