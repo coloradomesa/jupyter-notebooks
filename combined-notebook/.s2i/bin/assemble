@@ -16,9 +16,9 @@ pip3 install -r /tmp/src/requirements.txt
 mkdir -p cling && cd cling/
 curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
 tar xf cling*
-cd cling*
+cd cling_2017-11-13_ubuntu16
 cp -R * /usr/local/
-cd ..
+cd ../..
 # Activate JupyterHub extension for JupyterLab.
 
 #jupyter labextension install @jupyterlab/hub-extension
