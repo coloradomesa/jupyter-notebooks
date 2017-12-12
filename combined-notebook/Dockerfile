@@ -22,7 +22,7 @@ RUN mkdir -p cling && cd cling/ && \
 RUN cd /tmp/src &&\
     wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh > /dev/null && \
     bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/share/conda && \
-    export PATH="$HOME/conda/bin:$PATH"
+    export PATH="/usr/local/share/conda/bin:$PATH"
 
 # Install scijava jupyter kernel
 RUN conda config --add channels conda-forge && \
