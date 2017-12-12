@@ -26,7 +26,7 @@ jupyter-kernelspec install cling-cpp14
 jupyter-kernelspec install cling-cpp17
 # Activate JupyterHub extension for JupyterLab.
 
-jupyter labextension install @jupyterlab/hub-extension
+#jupyter labextension install @jupyterlab/hub-extension
 
 # Install anaconda python
 cd ~
