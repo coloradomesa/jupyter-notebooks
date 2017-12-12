@@ -1,6 +1,6 @@
 FROM ubuntu:rolling
 COPY . /tmp/src/
-WORKDIR /tmp/src/requirements.txt
+WORKDIR /tmp/src/
 USER root
 RUN apt-get update && apt-get install python python3 python3-pip cmake make wget curl bzip2 build-essential zlib1g-dev subversion texinfo git -y
 RUN pip3 install --upgrade pip
