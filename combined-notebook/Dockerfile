@@ -11,7 +11,6 @@ RUN mkdir -p cling && cd cling/ && \
     curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 && \
     tar xf cling* && \
     cd cling_2017-11-13_ubuntu16 && \
-    rm ../cling_2017-11-13_ubuntu16.tar.bz2 && \
     cp -R * /usr/local/ && \
     cd /usr/local/share/cling/Jupyter/kernel/ && \
     pip3 install -e . && \
@@ -20,7 +19,7 @@ RUN mkdir -p cling && cd cling/ && \
     jupyter-kernelspec install cling-cpp17
 
 # Install Anaconda Python
-RUN cd ~ &&\
+RUN cd /tmp/src &&\
     wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh && \
     bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/share/conda && \
     export PATH="$HOME/conda/bin:$PATH"
@@ -42,6 +41,12 @@ if password:\
     del password\
     del os.environ['JUPYTER_NOTEBOOK_PASSWORD']\
 EOF
+
+
+# Cleanup
+RUN rm -rf /tmp/src && \
+    apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./builder /opt/app-root/builder
 CMD ['exec', '/opt/app-root/builder/run']
