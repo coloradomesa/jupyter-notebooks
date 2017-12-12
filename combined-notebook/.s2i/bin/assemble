@@ -12,7 +12,7 @@ pip3 install -U pip setuptools wheel
 
 pip3 install -r /tmp/src/requirements.txt
 
-# Install cling
+# Install cling for c++ kernels
 mkdir -p cling && cd cling/
 curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 #  or `curl -O <url>`
 tar xf cling*
@@ -26,7 +26,23 @@ jupyter-kernelspec install cling-cpp14
 jupyter-kernelspec install cling-cpp17
 # Activate JupyterHub extension for JupyterLab.
 
-#jupyter labextension install @jupyterlab/hub-extension
+jupyter labextension install @jupyterlab/hub-extension
+
+# Install anaconda python
+cd ~
+wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
+bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p $HOME/conda
+export PATH="$HOME/conda/bin:$PATH"
+
+# Install scijava jupyter kernel
+conda config --add channels conda-forge
+conda create --name java_env scijava-jupyter-kernel
+source activate java_env
+
+# List all kernels to make sure everything is installed
+echo "List of installed jupyter kernels:"
+jupyter kernelspec list
+
 
 # Create a profile for the notebook. Add code for setting password for
 # the notebook from an environment variable.
