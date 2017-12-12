@@ -31,7 +31,7 @@ jupyter-kernelspec install cling-cpp17
 # Install anaconda python
 cd ~
 wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p $HOME/conda
+bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/share/conda
 export PATH="$HOME/conda/bin:$PATH"
 
 # Install scijava jupyter kernel
