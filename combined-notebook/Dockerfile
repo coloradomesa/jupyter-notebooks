@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 
 # Install Cling for C++11, C++14, and C++17 Kernels
 RUN mkdir -p cling && cd cling/ && \
-    curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 && \
+    curl -O https://root.cern.ch/download/cling/cling_2017-11-13_ubuntu16.tar.bz2 > /dev/null && \
     tar xf cling* && \
     cd cling_2017-11-13_ubuntu16 && \
     cp -R * /usr/local/ && \
@@ -20,7 +20,7 @@ RUN mkdir -p cling && cd cling/ && \
 
 # Install Anaconda Python
 RUN cd /tmp/src &&\
-    wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh && \
+    wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh > /dev/null && \
     bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/share/conda && \
     export PATH="$HOME/conda/bin:$PATH"
 
